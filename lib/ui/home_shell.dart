@@ -6,7 +6,6 @@ import '../protocol/errors.dart';
 import '../state/app_controller.dart';
 import '../theme.dart';
 import 'pages/alarms_page.dart';
-import 'pages/cells_page.dart';
 import 'pages/connect_page.dart';
 import 'pages/dashboard_page.dart';
 import 'pages/debug_page.dart';
@@ -22,7 +21,6 @@ class _NavItem {
 
 const _navItems = [
   _NavItem('监控', Icons.dashboard_outlined, Icons.dashboard),
-  _NavItem('电芯', Icons.bar_chart_outlined, Icons.bar_chart),
   _NavItem('告警', Icons.warning_amber_rounded, Icons.warning_rounded),
   _NavItem('参数', Icons.tune_rounded, Icons.tune_rounded),
   _NavItem('设备', Icons.memory_rounded, Icons.memory_rounded),
@@ -49,7 +47,6 @@ class _HomeShellState extends State<HomeShell> {
 
     final pages = [
       const DashboardPage(),
-      const CellsPage(),
       const AlarmsPage(),
       const ParamsPage(),
       const DevicePage(),
@@ -148,7 +145,7 @@ class _HomeShellState extends State<HomeShell> {
               destinations: [
                 for (int i = 0; i < _navItems.length; i++)
                   NavigationRailDestination(
-                    icon: i == 2 && alarmCount > 0
+                    icon: i == 1 && alarmCount > 0
                         ? Badge(
                             label: Text('$alarmCount'),
                             backgroundColor: AppColors.red,
@@ -178,7 +175,7 @@ class _HomeShellState extends State<HomeShell> {
         destinations: [
           for (int i = 0; i < _navItems.length; i++)
             NavigationDestination(
-              icon: i == 2 && alarmCount > 0
+              icon: i == 1 && alarmCount > 0
                   ? Badge(
                       label: Text('$alarmCount'),
                       backgroundColor: AppColors.red,
